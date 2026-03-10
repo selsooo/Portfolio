@@ -1,0 +1,1089 @@
+/* ───────── General Style ───────── */
+:root {
+    /* Dégradé Periwinkle (Bleu) vers Pistachio (Vert doux) */
+    --main-bg: linear-gradient(135deg, #9ECCF0 0%, #fefdc0 100%);
+    
+    /* Fond des fenêtres : Blanc pur pour faire ressortir les couleurs */
+    --window-bg: #fae8e6; 
+    
+    /* En-tête : Spring Coral (Le corail dynamique) */
+    --header-bg: #F59C9A; 
+    
+    /* Bordures : Une version foncée du Periwinkle pour rester lisible */
+    --border-col: #4a6fa5; 
+    
+    /* Accent : Butter Yellow */
+    --accent-col: #FFE7AB;
+}
+body {
+    background: var(--main-bg);
+    background-attachment: fixed;
+    margin: 0; padding: 0;
+    font-family: "Courier New", monospace;
+    color: var(--border-col);
+    min-height: 100vh;
+    display: flex; flex-direction: column;
+}
+/* ───────── BACKGROUND FLEURI (Overlay) ───────── */
+body::before {
+    content: "";
+    position: fixed; /* Reste fixe même quand on scrolle */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    
+    /* REMPLACE L'URL CI-DESSOUS PAR CELLE DE TON IMAGE DE FLEUR */
+    background-image: url('image/ma-fleur.png'); 
+    
+    /* Répétition du motif (pour faire un papier peint) */
+    background-repeat: repeat;
+    
+    /* Taille des fleurs (ajuste selon tes goûts) */
+    background-size: 300px; 
+    
+    /* LA TRANSPARENCE : 0.1 = très léger, 0.5 = moyen, 1 = opaque */
+    opacity: 0.15; 
+    
+    /* Pour que ça reste bien derrière les fenêtres */
+    z-index: -1; 
+    
+    /* Permet de cliquer à travers (sécurité) */
+    pointer-events: none; 
+}
+
+/* APPLICATION DU STYLE */
+.window {
+    width: 90%; max-width: 1000px; margin: 20px auto;
+    display: flex; flex-direction: column; max-height: 80vh;
+    background-color: var(--window-bg);
+    border: 3px solid var(--border-col);
+    box-shadow: 8px 8px 0px rgba(74, 111, 165, 0.3);
+}
+
+.window-header {
+    background: var(--header-bg);
+    padding: 10px 15px; font-weight: bold;
+    display: flex; justify-content: space-between; align-items: center;
+    border-bottom: 3px solid var(--border-col);
+    color: #fff; text-shadow: 1px 1px 0px var(--border-col);
+}
+
+/* Bordures colorées partout */
+.card, .contact-box, .spotify-bar, .modal-window, .app-drawer-content, .nav-buttons a, .icon-box {
+    border: 3px solid var(--border-col) !important;
+    color: var(--border-col);
+}
+
+/* Petite touche spéciale pour cette palette : barres de progression jaunes */
+.bar, .progress {
+    background: #FFE7AB !important; /* Butter Yellow */
+}
+
+.window-icons .icon {
+    width: 12px;
+    height: 12px;
+    border: 2px solid #2d2d2d;
+    border-radius: 50%;
+    margin-left: 5px;
+}
+
+/* Petite touche finale : Scrollbar personnalisée assortie */
+::-webkit-scrollbar-thumb {
+    background: #CDB4DB; /* Lilac Haze */
+    border: 2px solid var(--border-col);
+}
+/* Style des boutons et icônes */
+.nav-buttons a, .icon-box {
+    border-color: var(--border-col) !important;
+    color: var(--border-col);
+}
+.content {
+    padding: 20px;
+    max-height: 70vh; /* Ajustez selon vos besoins */
+    overflow-y: auto; /* Active le scroll interne */
+}
+
+/* ───────── Hero Section ───────── */
+.hero {
+    text-align: center;
+    position: relative;
+}
+
+.avatar img {
+    width: 120px;
+    border: 3px solid #2d2d2d;
+}
+
+.bubble {
+    background: white;
+    display: inline-block;
+    padding: 10px 20px;
+    border: 3px solid #2d2d2d;
+    margin-top: 10px;
+    border-radius: 10px;
+    font-size: 18px;
+}
+
+@keyframes moveClouds {
+    from { background-position: 0 center; }
+    to { background-position: 1000px center; }
+}
+
+.sky {
+    margin-top: 20px;
+    height: 150px;
+    /* Assure-toi que cette image existe bien, sinon supprime la ligne background */
+    background: url('image/pixel-clouds.png') repeat-x center;
+    background-size: auto 100%;
+    animation: moveClouds 60s linear infinite;
+}
+
+/* ───────── Programs / Grid Layout (Accueil) ───────── */
+.card {
+    border: 3px solid #2d2d2d;
+    background: #ffffff;
+    padding: 15px;
+}
+
+.card-header {
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.bar-list li {
+    margin: 8px 0;
+    display: flex;
+    justify-content: flex-start; 
+    align-items: center;
+}
+
+.bar-list li span {
+    width: 100px;
+    flex-shrink: 0;
+}
+
+.bar {
+    height: 10px;
+    background: #c3ecec;
+    border: 2px solid #2d2d2d;
+    transition: width 0.3s ease;
+    flex: 1;
+    margin-left: 10px;
+    min-width: 0;
+}
+
+/* ───────── Connect Section ───────── */
+.connect {
+    text-align: center;
+}
+
+.contact-box {
+    background: white;
+    border: 3px solid #2d2d2d;
+    display: inline-block;
+    margin-top: 20px;
+    padding: 15px 25px;
+    text-align: left;
+    line-height: 1.6;
+}
+
+/* ───────── Navigation Icons ───────── */
+.window-icons.nav-buttons {
+    display: flex;
+    gap: 8px;
+}
+
+.nav-buttons a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    background: #ffffff;
+    border: 2px solid #2d2d2d;
+    color: #6a374e;
+    text-decoration: none;
+    font-size: 16px;
+    transition: all 0.2s ease;
+    box-shadow: 2px 2px 0px #2d2d2d;
+}
+
+.nav-buttons a:hover {
+    background: #3A445D;
+    color: #ffffff;
+    transform: translate(2px, 2px);
+    box-shadow: none;
+    cursor: pointer;
+}
+
+/* Tooltips */
+.nav-buttons a { position: relative; }
+.nav-buttons a::after {
+    content: attr(title);
+    position: absolute;
+    top: 120%;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: white;
+    color: #000;
+    border: 1px solid #000;
+    padding: 4px 8px;
+    font-family: Tahoma, sans-serif;
+    font-size: 12px;
+    white-space: nowrap;
+    box-shadow: 1px 1px 0px rgba(0,0,0,0.5);
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.1s ease;
+    pointer-events: none;
+}
+.nav-buttons a:hover::after {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* ───────── CAROUSEL (Pour page Compétences) ───────── */
+.carousel-wrapper {
+    position: relative;
+    width: 100%;
+    max-width: 100%;
+    padding: 0 10px;
+    box-sizing: border-box;
+}
+
+.carousel-title {
+    text-align: center;
+    color: #333;
+    margin-bottom: 30px;
+    font-size: 2rem;
+}
+
+.carousel-track {
+    display: flex;
+    gap: 20px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    padding: 20px 5px;
+    scrollbar-width: none;
+}
+.carousel-track::-webkit-scrollbar { display: none; }
+
+.skill-card {
+    flex: 0 0 auto;
+    width: 260px;
+    background: white;
+    border-radius: 16px;
+    padding: 30px 20px;
+    text-align: center;
+    scroll-snap-align: center;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: default;
+}
+
+.skill-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+}
+
+.icon-box {
+    font-size: 3rem;
+    margin-bottom: 15px;
+    color: #4a90e2;
+}
+
+.skill-card h3 { margin: 10px 0; color: #2c3e50; }
+.skill-card p { color: #7f8c8d; font-size: 0.9rem; line-height: 1.5; }
+
+.nav-btn {
+    position: absolute;
+    top: 55%;
+    transform: translateY(-50%);
+    background: white;
+    border: none;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    cursor: pointer;
+    z-index: 10;
+    font-size: 1.2rem;
+    color: #333;
+    transition: background 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.nav-btn:hover { background: #4a90e2; color: white; }
+.prev-btn { left: -10px; }
+.next-btn { right: -10px; }
+
+/* ───────── MOBILE RESPONSIVE ───────── */
+@media (max-width: 768px) {
+    .nav-btn { display: none; }
+    
+    .window {
+        width: 95%;
+        margin: 15px auto;
+    }
+}
+
+/* ───────── MODAL / POPUP STYLE ───────── */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    z-index: 9999;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease;
+}
+
+.modal-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.modal-window {
+    width: 90%;
+    max-width: 600px;
+    background: #E0E1DD;
+    max-height: 85vh; /* Ne dépasse pas l'écran */
+    display: flex;
+    flex-direction: column;
+    overflow: hidden; /* Coupe le surplus externe */
+}
+
+
+.modal-overlay.active .modal-window {
+    transform: scale(1);
+}
+
+.modal-icon-large {
+    font-size: 4rem;
+    color: #415A77;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+#modal-desc {
+    font-size: 1.1rem;
+    line-height: 1.5;
+    color: #1B263B;
+    white-space: pre-line;
+    text-align: left;
+}
+
+.close-btn {
+    background: #c0c0c0;
+    border: 2px outset #ffffff;
+    font-weight: bold;
+    cursor: pointer;
+    width: 25px;
+    height: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: Arial, sans-serif;
+}
+.close-btn:active {
+    border: 2px inset #ffffff;
+}
+
+/* ───────── CUSTOM CURSOR (CORRIGÉ) ───────── */
+
+/* 1. Le curseur par défaut (la flèche classique) */
+html, body {
+    cursor: default; 
+}
+
+/* 2. Le curseur quand on survole un élément cliquable (la main système) */
+a, button, .nav-btn, .skill-card, .close-btn, .file-item, .social-link {
+    cursor: pointer; 
+}
+
+/* ───────── LOGIN PAGE STYLE ───────── */
+.login-body {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.login-window {
+    width: 350px;
+    margin: 0;
+    text-align: center;
+}
+
+.login-content input {
+    width: 80%;
+    padding: 10px;
+    margin: 10px 0;
+    font-family: "Courier New", monospace;
+    border: 2px solid #2d2d2d;
+    background: #fff;
+    font-size: 1.1rem;
+    text-align: center;
+    outline: none;
+}
+
+.retro-btn {
+    background: #c0c0c0;
+    border: 2px outset #fff;
+    border-right-color: #404040;
+    border-bottom-color: #404040;
+    padding: 8px 20px;
+    font-family: "Courier New", monospace;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.retro-btn:active {
+    border: 2px inset #fff;
+    transform: translateY(2px);
+}
+
+@keyframes shake {
+    0% { transform: translate(1px, 1px) rotate(0deg); }
+    10% { transform: translate(-1px, -2px) rotate(-1deg); }
+    20% { transform: translate(-3px, 0px) rotate(1deg); }
+    30% { transform: translate(3px, 2px) rotate(0deg); }
+    40% { transform: translate(1px, -1px) rotate(1deg); }
+    50% { transform: translate(-1px, 2px) rotate(-1deg); }
+    60% { transform: translate(-3px, 1px) rotate(0deg); }
+    70% { transform: translate(3px, 1px) rotate(-1deg); }
+    80% { transform: translate(-1px, -1px) rotate(1deg); }
+    90% { transform: translate(1px, 2px) rotate(0deg); }
+    100% { transform: translate(1px, -2px) rotate(-1deg); }
+}
+
+.shake {
+    animation: shake 0.5s;
+}
+
+/* ───────── BOOT SEQUENCE STYLES ───────── */
+.login-container {
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.hidden {
+    display: none !important;
+}
+
+/* ───────── WINDOWS EXPLORER STYLE ───────── */
+.menu-bar {
+    background: #c0c0c0;
+    padding: 2px 10px;
+    border-bottom: 1px solid #808080;
+    font-size: 14px;
+    display: flex;
+    gap: 15px;
+    cursor: default;
+}
+
+.address-bar-container {
+    background: #c0c0c0;
+    padding: 5px 10px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border-bottom: 1px solid #ffffff;
+}
+.address-input {
+    background: white;
+    border: 2px inset #fff;
+    width: 100%;
+    padding: 2px 5px;
+    font-family: 'Courier New', monospace;
+    font-size: 14px;
+}
+
+.explorer-body {
+    display: flex;
+    flex: 1; /* Prend tout l'espace restant dans la fenêtre */
+    background: white;
+    border: 2px inset #fff;
+    margin: 5px;
+    overflow: hidden; /* Important : le scroll se gère dans les colonnes filles */
+}
+
+.sidebar-tree {
+    width: 200px;
+    background: white;
+    border-right: 2px solid #808080;
+    padding: 10px;
+    overflow-y: auto; /* Active le scroll propre à la colonne de gauche */
+    font-family: Tahoma, sans-serif;
+    font-size: 13px;
+    flex-shrink: 0; /* Empêche la barre de s'écraser */
+}
+.sidebar-tree ul {
+    list-style: none;
+    padding-left: 5px;
+}
+.sidebar-tree li {
+    margin-bottom: 8px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+.active-folder {
+    background-color: #000080;
+    color: white;
+    padding: 2px;
+}
+.tree-line {
+    border-left: 1px dotted #808080;
+    border-bottom: 1px dotted #808080;
+    width: 10px;
+    height: 10px;
+    display: inline-block;
+    margin-right: 5px;
+}
+
+/* Scroll pour la grille de fichiers */
+.file-grid {
+    flex: 1;
+    padding: 20px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+    gap: 20px;
+    overflow-y: auto; /* Active le scroll uniquement ici */
+    background: white;
+}
+
+.file-item {
+    text-align: center;
+    cursor: pointer;
+    padding: 10px;
+    border: 1px solid transparent;
+    transition: 0.1s;
+}
+
+.file-item:hover {
+    background-color: #cce8ff;
+    border: 1px dotted #000080;
+}
+
+.file-icon {
+    font-size: 2.5rem;
+    margin-bottom: 8px;
+    display: block;
+}
+.color-1 { color: #4a90e2; }
+.color-2 { color: #f5a623; }
+.color-3 { color: #d0021b; }
+.color-4 { color: #7ed321; }
+
+.file-name {
+    font-size: 13px;
+    font-family: Tahoma, sans-serif;
+    color: #000;
+    margin-bottom: 3px;
+}
+.file-desc {
+    font-size: 10px;
+    color: #666;
+}
+
+.status-bar {
+    background: #c0c0c0;
+    border-top: 1px solid #808080;
+    padding: 5px 10px;
+    font-size: 12px;
+    display: flex;
+    gap: 20px;
+    font-family: Tahoma, sans-serif;
+}
+
+/* ───────── RETRO TIMELINE STYLE ───────── */
+.log-intro p {
+    font-family: "Courier New", monospace;
+    font-size: 14px;
+    margin: 5px 0;
+    color: #415A77;
+}
+
+.retro-timeline {
+    position: relative;
+    padding-left: 10px;
+    margin-top: 20px;
+    border-left: 2px dashed #808080; 
+    margin-left: 15px;
+}
+
+.timeline-item {
+    position: relative;
+    margin-bottom: 35px;
+    padding-left: 35px;
+}
+
+.timeline-item::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 12px;
+    width: 30px;
+    height: 2px;
+    background: #808080;
+}
+
+.timeline-date {
+    font-family: "Courier New", monospace;
+    font-weight: bold;
+    background: #415A77;
+    color: white;
+    display: inline-block;
+    padding: 4px 10px;
+    font-size: 14px;
+    border-radius: 4px;
+    margin-bottom: 10px;
+    box-shadow: 2px 2px 0px #2d2d2d;
+}
+
+.timeline-box {
+    background: #c0c0c0;
+    border: 2px solid #fff;
+    border-right-color: #404040;
+    border-bottom-color: #404040;
+    padding: 2px;
+    width: 95%;
+    transition: transform 0.2s ease;
+}
+
+.timeline-box:hover {
+    transform: translateX(5px);
+}
+
+.box-header {
+    background: #000080;
+    color: white;
+    padding: 5px 10px;
+    font-family: Tahoma, sans-serif;
+    font-size: 14px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.box-body {
+    background: white;
+    padding: 15px;
+    font-family: Tahoma, sans-serif;
+    font-size: 14px;
+    line-height: 1.5;
+    color: black;
+    border: 1px inset #fff;
+}
+
+.box-body strong {
+    display: block;
+    font-size: 15px;
+    margin-bottom: 5px;
+    color: #2d2d2d;
+    text-decoration: underline;
+}
+
+.pixel-list {
+    list-style: none;
+    padding-left: 15px;
+    margin-top: 10px;
+}
+
+.pixel-list li {
+    position: relative;
+    margin-bottom: 5px;
+    font-size: 13px;
+    color: #555;
+}
+
+.pixel-list li::before {
+    content: "";
+    position: absolute;
+    left: -15px;
+    top: 6px;
+    width: 6px;
+    height: 6px;
+    background-color: #415A77;
+}
+
+/* ───────── SOCIAL ICONS STYLE ───────── */
+.social-dock {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    align-items: center;
+    padding: 20px 40px;
+    border: 3px solid #2d2d2d;
+    background: white;
+}
+
+.social-link {
+    font-size: 3rem;
+    color: #2d2d2d;
+    text-decoration: none;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.social-link:hover {
+    transform: translateY(-5px) scale(1.1);
+    cursor: pointer;
+}
+
+.social-link:hover .fa-envelope { color: #EA4335; }
+.social-link:hover .fa-linkedin { color: #0077B5; }
+.social-link:hover .fa-instagram { color: #E1306C; }
+.social-link:hover .fa-github { color: #333; }
+
+/* ───────── TASKBAR STYLE ───────── */
+.taskbar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 40px;
+    background: #c0c0c0;
+    border-top: 2px solid #fff;
+    display: flex;
+    align-items: center;
+    padding: 2px;
+    z-index: 99999;
+    box-shadow: 0 -2px 5px rgba(0,0,0,0.2);
+}
+
+.start-btn {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-weight: bold;
+    font-family: "Courier New", monospace;
+    font-size: 16px;
+    padding: 5px 10px;
+    height: 32px;
+    background: #c0c0c0;
+    border: 2px outset #fff;
+    cursor: pointer;
+    margin-right: 10px;
+}
+.start-btn:active { border: 2px inset #fff; }
+
+.taskbar-divider {
+    width: 2px;
+    height: 25px;
+    background: #808080;
+    border-right: 1px solid #fff;
+    margin-right: 5px;
+}
+
+.task-tab {
+    background: #d4d4d4;
+    border: 2px inset #fff;
+    padding: 5px 15px;
+    font-family: Tahoma, sans-serif;
+    font-size: 13px;
+    font-weight: bold;
+    height: 28px;
+    display: flex;
+    align-items: center;
+}
+.active-tab { background: #e0e0e0; border: 2px inset #fff; }
+
+.taskbar-right {
+    margin-left: auto;
+    border: 2px inset #fff;
+    padding: 2px 10px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    background: #c0c0c0;
+    margin-right: 5px;
+}
+
+.system-tray {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: Tahoma, sans-serif;
+    font-size: 12px;
+}
+/* Couleurs spécifiques pour le carrousel */
+.skill-card:nth-child(1) .icon-box { color: #4a90e2; } /* Bleu (Numérique) */
+.skill-card:nth-child(2) .icon-box { color: #e056fd; } /* Rose (Multimédia) */
+.skill-card:nth-child(3) .icon-box { color: #f0932b; } /* Orange (E-learning) */
+.skill-card:nth-child(4) .icon-box { color: #eb4d4b; } /* Rouge (Jeu) */
+.skill-card:nth-child(5) .icon-box { color: #6ab04c; } /* Vert (Visio) */
+
+/* ───────── NOUVEAU STYLE LECTEUR MÉDIA ───────── */
+
+/* Le conteneur principal (modifie l'existant ou remplace-le) */
+.spotify-bar.media-player {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    background: #e0e0e0; /* Gris clair style Windows */
+    padding: 10px;
+    border: 3px solid #2d2d2d;
+    box-shadow: inset 2px 2px 0px #ffffff, inset -2px -2px 0px #808080;
+}
+
+/* Le disque qui tourne */
+.album-cover {
+    width: 60px;
+    height: 60px;
+    background: #2d2d2d;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px inset #ffffff;
+    flex-shrink: 0; /* Empêche l'image de rétrécir */
+}
+
+.album-cover i {
+    font-size: 40px;
+    color: #DEC2DB; /* Couleur pastel du disque */
+    animation: spin 4s linear infinite; /* Vitesse de rotation */
+}
+
+/* Animation de rotation */
+@keyframes spin { 
+    100% { transform: rotate(360deg); } 
+}
+
+/* Zone de texte et contrôles */
+.track-info {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    overflow: hidden; /* Important pour le texte long */
+}
+
+/* Le texte du titre */
+.scrolling-text {
+    font-family: 'Courier New', monospace;
+    white-space: nowrap;
+    margin-bottom: 5px;
+    color: #2d2d2d;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.song-title {
+    color: #000;
+    text-transform: uppercase;
+}
+
+.artist-name {
+    color: #555;
+    font-size: 12px;
+}
+
+/* Personnalisation de la barre audio native */
+.custom-audio {
+    width: 100%;
+    height: 30px;
+    filter: grayscale(100%); /* Rend le lecteur gris pour aller avec le thème */
+    opacity: 0.8;
+}
+.btn-download {
+    margin-left: 15px;      /* Espace à gauche */
+    color: #333;            /* Couleur de l'icône */
+    text-decoration: none;  /* Enlève le soulignement du lien */
+    cursor: pointer;        /* Affiche la main au survol */
+    font-size: 1.2rem;      /* Taille de l'icône */
+}
+
+.btn-download:hover {
+    color: #007bff;         /* Change de couleur au survol (bleu) */
+}
+.centered-row {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 2rem;
+    flex-wrap: wrap;
+    padding: 20px;
+}
+
+.centered-row .card {
+    flex: 1;
+    min-width: 300px;
+    max-width: 400px;
+}
+
+body {
+    padding-right: var(--scrollbar-width, 0px);
+    /* Cela évite le petit décalage si nécessaire */
+}
+/* Personnalisation de la barre de scroll pour la zone de contenu */
+.modal-window .content::-webkit-scrollbar {
+    width: 16px; /* Largeur classique des vieux Windows */
+}
+
+.modal-window .content::-webkit-scrollbar-track {
+    background: #dfdfdf; /* Fond gris clair */
+    box-shadow: inset 1px 1px 0px #fff, inset -1px -1px 0px #808080;
+}
+
+.modal-window .content::-webkit-scrollbar-thumb {
+    background: #c0c0c0;
+    border: 2px solid #dfdfdf;
+    /* Effet de relief 3D rétro */
+    box-shadow: inset 1px 1px 0px #fff, inset -1px -1px 0px #808080, 1px 1px 0px #000;
+}
+
+.modal-window .content::-webkit-scrollbar-thumb:hover {
+    background: #d4d4d4;
+}
+.category-title {
+    grid-column: 1 / -1; /* Force le titre à prendre toute la largeur */
+    font-weight: bold;
+    font-family: 'Segoe UI', Tahoma, sans-serif;
+    font-size: 0.9rem;
+    color: #003399; /* Bleu Windows classique */
+    padding: 10px 5px 5px 5px;
+    border-bottom: 1px solid #ccc;
+    margin-top: 15px;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.category-title::before {
+    content: "▼"; /* Petite flèche pour simuler un dossier ouvert */
+    margin-right: 8px;
+    font-size: 0.7rem;
+    color: #666;
+}
+/* Zone de bureau pour limiter le déplacement */
+.desktop-area {
+    position: relative;
+    height: 80vh;
+    overflow: hidden;
+}
+
+/* ───────── STYLE SPÉCIFIQUE "PROGRAM MANAGER" (COMPÉTENCES) ───────── */
+
+/* Fond blanc à l'intérieur de la fenêtre pour faire ressortir les icônes */
+.app-drawer-content {
+    background-color: #ffffff; 
+    border: 2px inset #ffffff; /* Effet enfoncé */
+    margin: 10px;
+    height: 400px; /* Hauteur fixe pour scroller si besoin */
+    overflow-y: auto;
+}
+
+.instruction-text {
+    font-size: 12px;
+    color: #666;
+    margin-bottom: 15px;
+    font-style: italic;
+    font-family: Tahoma, sans-serif;
+}
+
+/* La Grille d'applications */
+.app-grid {
+    display: grid;
+    /* Crée des colonnes automatiques d'environ 90px de large */
+    grid-template-columns: repeat(auto-fill, minmax(80px, 1fr)); 
+    gap: 20px;
+    padding: 10px;
+}
+
+/* L'élément App individuel */
+.app-icon {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 80px;
+    cursor: pointer;
+    text-align: center;
+    padding: 5px;
+    border: 1px dotted transparent; /* Bordure invisible pour préparer le hover */
+}
+
+/* Effet au survol (comme dans Windows) */
+.app-icon:hover {
+    background-color: #c0c0c0; /* Gris sélection */
+    border: 1px dotted #2d2d2d;
+}
+
+/* Effet au clic */
+.app-icon:active {
+    background-color: #2d2d2d;
+    color: white;
+}
+.app-icon:active .app-name {
+    background-color: #2d2d2d;
+    color: white;
+}
+
+/* Le carré de l'icône */
+.icon-box {
+    width: 48px;
+    height: 48px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 3px solid #2d2d2d; /* Ta bordure signature */
+    margin-bottom: 8px;
+    font-size: 24px;
+    color: white;
+    box-shadow: 2px 2px 0px rgba(0,0,0,0.2);
+    transition: transform 0.1s;
+}
+
+.app-icon:hover .icon-box {
+    transform: translate(-1px, -1px);
+    box-shadow: 4px 4px 0px rgba(0,0,0,0.2);
+}
+
+/* Le nom de l'app en dessous */
+.app-name {
+    font-family: 'Courier New', monospace; /* Ta police choisie */
+    font-size: 12px;
+    font-weight: bold;
+    color: #0D1B2A;
+    word-break: break-word;
+    line-height: 1.2;
+    margin-top: 2px;
+}
+
+/* COULEURS SPÉCIFIQUES POUR CHAQUE APP (Pour simuler les logos) */
+.discord-style   { background: #5865F2; }
+.teams-style     { background: #6264A7; }
+.zoom-style      { background: #2D8CFF; }
+.capcut-style    { background: #000000; }
+.openshot-style  { background: #415A77; } /* Ton bleu thème */
+.ppt-style       { background: #D24726; }
+.canva-style     { background: #00C4CC; }
+.genially-style  { background: linear-gradient(135deg, #383276, #FF4E6D); }
+.office-style    { background: #D83B01; }
+.moodle-style    { background: #F98012; }
+
+/* Responsive mobile */
+@media (max-width: 600px) {
+    .app-grid {
+        grid-template-columns: repeat(3, 1fr); /* 3 par ligne sur mobile */
+    }
+}

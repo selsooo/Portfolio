@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mes compétences - Selsabil BIDA</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    
+    <style>
+        /* ---------------------------------------------------
+           STYLE SPÉCIFIQUE : DOSSIERS SUPERPOSÉS (5 CATÉGORIES)
+        --------------------------------------------------- */
+        .cabinet-container {
+            padding: 30px 20px;
+            background-color: #f1ebd9;
+            height: 600px;
+            overflow-y: auto;
+            border-bottom: 2px solid #000;
+        }
+
+        /* --- DOSSIER PRINCIPAL --- */
+        .folder-wrapper {
+            position: relative;
+            margin-top: -65px; 
+            filter: drop-shadow(0px -5px 8px rgba(0,0,0,0.15));
+            /* Transition fluide pour l'effet de soulèvement */
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            cursor: pointer;
+        }
+
+        .folder-wrapper:first-child { margin-top: 0; }
+
+        /* L'EFFET MAGIQUE : Le dossier entier glisse vers le haut au survol */
+        .folder-wrapper:hover {
+            transform: translateY(-15px);
+            filter: drop-shadow(0px -8px 12px rgba(0,0,0,0.25));
+        }
+
+        /* L'état quand le dossier est ouvert */
+        .folder-wrapper.active {
+            margin-top: -10px; 
+            margin-bottom: 20px; 
+            z-index: 10; 
+            filter: drop-shadow(0px 10px 20px rgba(0,0,0,0.3));
+            /* On annule le glissement quand il est ouvert pour qu'il reste stable */
+            transform: translateY(0); 
+        }
+
+        /* --- ONGLET DU DOSSIER --- */
+        .folder-tab {
+            display: inline-block;
+            padding: 8px 25px 15px 25px;
+            border-radius: 12px 12px 0 0;
+            font-family: Arial, sans-serif;
+            font-weight: bold;
+            font-size: 13px;
+            position: relative;
+            z-index: 2;
+            margin-bottom: -10px; 
+            border: none !important; 
+            outline: none !important; 
+            /* J'ai supprimé la translation horizontale ici pour éviter un mouvement diagonal */
+            transition: transform 0.2s;
+        }
+        
+        /* Garde le petit décalage sur le côté uniquement quand c'est ouvert */
+        .folder-wrapper.active .folder-tab {
+            transform: translateX(10px);
+        }
+
+        .folder-body {
+            border-radius: 15px;
+            height: 110px; 
+            position: relative;
+            z-index: 1;
+            overflow: hidden;
+            transition: height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            background-image: repeating-linear-gradient(to right, rgba(255,255,255,0.03) 0px, rgba(255,255,255,0.03) 1px, transparent 1px, transparent 4px);
+        }
+
+        .folder-wrapper.active .folder-body {
+            height: 420px; 
+            cursor: default;
+        }
+
+        /* --- RÉPARTITION DES 5 DOSSIERS --- */
+        .folder-white .folder-tab { margin-left: 2%; background-color: #f7f6f1; color: #c46473; }
+        .folder-white .folder-body { background-color: #f7f6f1; color: #333; }
+
+        .folder-pink .folder-tab { margin-left: 22%; background-color: #f39db4; color: #fff; }
+        .folder-pink .folder-body { background-color: #f39db4; color: #fff; }
+
+        .folder-yellow .folder-tab { margin-left: 42%; background-color: #dca744; color: #fff; }
+        .folder-yellow .folder-body { background-color: #dca744; color: #fff; }
+
+        .folder-green .folder-tab { margin-left: 62%; background-color: #8c9e5e; color: #fff; }
+        .folder-green .folder-body { background-color: #8c9e5e; color: #fff; }
+
+        .folder-black .folder-tab { margin-left: 82%; background-color: #1a1a1a; color: #fff; }
+        .folder-black .folder-body { background-color: #1a1a1a; color: #fff; }
+
+        /* --- CONTENU --- */
+        .folder-content {
+            padding: 25px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            height: 100%;
+            position: relative;
+        }
+        .folder-wrapper.active .folder-content { opacity: 1; transition-delay: 0.2s; }
+
+        .watermark-text {
+            position: absolute;
+            bottom: 10px;
+            right: 20px;
+            font-size: 50px;
+            font-weight: 900;
+            opacity: 0.15;
+            letter-spacing: -2px;
+            pointer-events: none;
+            text-transform: uppercase;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+            gap: 15px;
+            position: relative;
+            z-index: 5;
+            margin-top: 15px;
+        }
+        .skill-file {
+            text-align: center;
+            cursor: pointer;
+            padding: 15px 10px;
+            border-radius: 8px;
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+        
+        /* Fait aussi glisser les petits fichiers à l'intérieur */
+        .skill-file:hover { 
+            background: rgba(0,0,0,0.08); 
+            transform: translateY(-8px); 
+            box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+        }
+
+        .folder-black .skill-file:hover { 
+            background: rgba(255,255,255,0.1); 
+            transform: translateY(-8px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.4);
+        }
+        
+        .skill-file i { font-size: 35px; margin-bottom: 10px; display: block; }
+        .skill-file span { font-family: 'Courier New', Courier, monospace; font-size: 12px; font-weight: bold; word-break: break-word;}
+    </style>
+</head>
+<body>
+   
+<section class="window">
+    <div class="window-header">
+        <span>C:\SYSTEM32\COMPETENCES.EXE</span>
+        <div class="window-icons nav-buttons">
+            <a href="index.html" title="Retour à l'accueil"><i class="fa-solid fa-house"></i></a>
+            <a href="parcours.html" title="Mon parcours"><i class="fa-solid fa-briefcase"></i></a>
+            <a href="projets.html" title="Projets"><i class="fa-solid fa-folder-open"></i></a>
+        </div>
+    </div>
+    
+    <div class="cabinet-container" id="cabinet">
+
+        <div class="folder-wrapper folder-white" onclick="toggleFolder(this)">
+            <div class="folder-tab">e-learning</div>
+            <div class="folder-body">
+                <div class="folder-content">
+                    <h2 style="margin-top:0; color:#c46473;">Conception Pédagogique & Outils-Auteurs</h2>
+                    <p style="font-size: 13px; font-style: italic; margin-bottom: 20px;">Le cœur de mon métier : créer des expériences d'apprentissage interactives.</p>
+                    <div class="skills-grid">
+                        <div class="skill-file" onclick="openSkill(event, 'genially')">
+                            <i class="fa-solid fa-person-chalkboard" style="color:#2c3e50;"></i><span>Genially & PPT</span>
+                        </div>
+                        <div class="skill-file" onclick="openSkill(event, 'quizlet')">
+                            <i class="fa-solid fa-clone" style="color:#4257b2;"></i><span>Quizlet</span>
+                        </div>
+                        <div class="skill-file" onclick="openSkill(event, 'h5p')">
+                            <i class="fa-solid fa-cubes" style="color:#e74c3c;"></i><span>H5P / Storyline</span>
+                        </div>
+                    </div>
+                    <div class="watermark-text" style="color:#c46473;">CONCEPTION</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="folder-wrapper folder-pink" onclick="toggleFolder(this)">
+            <div class="folder-tab">media.psd</div>
+            <div class="folder-body">
+                <div class="folder-content">
+                    <h2 style="margin-top:0;">Création et Édition Multimédia</h2>
+                    <p style="font-size: 13px; font-style: italic; margin-bottom: 20px;">Créer des médias sur-mesure pour s'adapter au public cible.</p>
+                    <div class="skills-grid">
+                        <div class="skill-file" onclick="openSkill(event, 'canva')">
+                            <i class="fa-solid fa-object-group"></i><span>Canva & PicsArt</span>
+                        </div>
+                        <div class="skill-file" onclick="openSkill(event, 'capcut')">
+                            <i class="fa-solid fa-film"></i><span>CapCut / Vidéo</span>
+                        </div>
+                        <div class="skill-file" onclick="openSkill(event, 'audacity')">
+                            <i class="fa-solid fa-microphone-lines"></i><span>Audacity</span>
+                        </div>
+                        <div class="skill-file" onclick="openSkill(event, 'obs')">
+                            <i class="fa-solid fa-desktop"></i><span>OBS Studio</span>
+                        </div>
+                    </div>
+                    <div class="watermark-text">MULTIMÉDIA</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="folder-wrapper folder-yellow" onclick="toggleFolder(this)">
+            <div class="folder-tab">social.exe</div>
+            <div class="folder-body">
+                <div class="folder-content">
+                    <h2 style="margin-top:0;">Classes Virtuelles & Collaboration</h2>
+                    <p style="font-size: 13px; font-style: italic; margin-bottom: 20px;">Outils indispensables pour la formation à distance et hybride.</p>
+                    <div class="skills-grid">
+                        <div class="skill-file" onclick="openSkill(event, 'zoom')">
+                            <i class="fa-solid fa-video"></i><span>Zoom & Teams</span>
+                        </div>
+                        <div class="skill-file" onclick="openSkill(event, 'discord')">
+                            <i class="fa-brands fa-discord"></i><span>Discord</span>
+                        </div>
+                        <div class="skill-file" onclick="openSkill(event, 'padlet')">
+                            <i class="fa-solid fa-note-sticky"></i><span>Padlet</span>
+                        </div>
+                    </div>
+                    <div class="watermark-text">ANIMATION</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="folder-wrapper folder-green" onclick="toggleFolder(this)">
+            <div class="folder-tab">code.html</div>
+            <div class="folder-body">
+                <div class="folder-content">
+                    <h2 style="margin-top:0;">Ingénierie Web & Intégration</h2>
+                    <p style="font-size: 13px; font-style: italic; margin-bottom: 20px;">Comprendre le web pour personnaliser et corriger les modules e-learning.</p>
+                    <div class="skills-grid">
+                        <div class="skill-file" onclick="openSkill(event, 'webdev')">
+                            <i class="fa-solid fa-code"></i><span>HTML / CSS / JS</span>
+                        </div>
+                        <div class="skill-file" onclick="openSkill(event, 'github')">
+                            <i class="fa-brands fa-github"></i><span>GitHub</span>
+                        </div>
+                    </div>
+                    <div class="watermark-text">DÉVELOPPEMENT</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="folder-wrapper folder-black" onclick="toggleFolder(this)">
+            <div class="folder-tab">system.sys</div>
+            <div class="folder-body">
+                <div class="folder-content">
+                    <h2 style="margin-top:0;">Gestion de Projet & Environnement</h2>
+                    <p style="font-size: 13px; font-style: italic; margin-bottom: 20px;">L'organisation est la clé de la conception de parcours de formation.</p>
+                    <div class="skills-grid">
+                        <div class="skill-file" onclick="openSkill(event, 'notion')">
+                            <i class="fa-solid fa-book-open"></i><span>Notion</span>
+                        </div>
+                        <div class="skill-file" onclick="openSkill(event, 'office')">
+                            <i class="fa-solid fa-file-word"></i><span>Suite Office</span>
+                        </div>
+                        <div class="skill-file" onclick="openSkill(event, 'moodle')">
+                            <i class="fa-solid fa-graduation-cap"></i><span>Moodle / LMS</span>
+                        </div>
+                    </div>
+                    <div class="watermark-text">GESTION</div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    
+    <div class="status-bar">
+        <span>5 Dossiers détectés</span>
+        <span>Système : Prêt</span>
+    </div>
+</section>
+
+<div id="app-modal-overlay" class="modal-overlay" onclick="closeAppModal(event)">
+    <div class="window modal-window" style="background-color: #6585b3;"> 
+        <div class="window-header">
+            <span id="modal-title-bar">Application.exe</span>
+            <div class="window-icons">
+                <div class="close-btn" onclick="closeAppModal(null)">X</div>
+            </div>
+        </div>
+        <div class="content" style="background-color: #E0E1DD; height: 100%; padding:20px;">
+            <div id="modal-dynamic-content"></div>
+            <br>
+            <div style="text-align: center;">
+                <button class="retro-btn" onclick="closeAppModal(null)">FERMER</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="script.js"></script>
+<script>
+    // 1. Gestion de l'ouverture des dossiers
+    function toggleFolder(clickedFolder) {
+        if (clickedFolder.classList.contains('active')) {
+            clickedFolder.classList.remove('active');
+            return;
+        }
+        document.querySelectorAll('.folder-wrapper').forEach(folder => {
+            folder.classList.remove('active');
+        });
+        clickedFolder.classList.add('active');
+        setTimeout(() => {
+            clickedFolder.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }, 300);
+    }
+
+    // 2. Base de données des compétences (avec les chemins des logos image)
+    const skillsData = {
+        genially: {
+            title: "Genially & PPT.exe",
+            logo: "image/genially.png",
+            desc: "<b>Description :</b> Création de présentations dynamiques, d'infographies interactives et d'escape games éducatifs.<br><br><b>Application :</b><br>• <i>L'enseignant :</i> Captive l'attention des apprenants en classe, présente des points de grammaire ou de culture de manière visuelle.<br>• <i>IP :</i> Scénariser des modules d'apprentissage interactifs, créer des supports visuels pour des formations en autonomie."
+        },
+        quizlet: {
+            title: "Quizlet.app",
+            logo: "image/quizlet.png",
+            desc: "<b>Description :</b> Création de flashcards et de jeux d'apprentissage basés sur la répétition espacée.<br><br><b>Application :</b> Très utile pour l'enseignant afin de favoriser la mémorisation du vocabulaire en langue étrangère (évaluation formative et ludification)."
+        },
+        h5p: {
+            title: "H5P.scorm",
+            logo: "image/h5p.jpg",
+            desc: "<b>Description :</b> Outils-auteurs permettant de créer du contenu riche (vidéos interactives, quiz complexes).<br><br><b>Application :</b> Compétence très prisée des ingénieurs pédagogiques pour concevoir des modules e-learning complets compatibles avec les plateformes d'apprentissage."
+        },
+        canva: {
+            title: "Canva_PicsArt.psd",
+            logo: "image/canva.jpg",
+            desc: "<b>Description :</b> Conception graphique simplifiée (retouche d'image, création de visuels, bannières, fiches mémos).<br><br><b>Application :</b><br>• <i>Enseignante :</i> Créer des fiches de vocabulaire visuelles ou des supports de jeux de rôle.<br>• <i>IP :</i> Assurer l'ergonomie visuelle et concevoir l'identité graphique d'un parcours de formation."
+        },
+        capcut: {
+            title: "Montage_Video.mp4",
+            logo: "image/capcut.png",
+            desc: "<b>Description :</b> Montage et habillage vidéo (coupes, ajout de sous-titres, transitions, effets sonores) via CapCut, OpenShot, etc.<br><br><b>Application :</b> Essentiel pour la pédagogie inversée (création de capsules vidéo théoriques par l'enseignante) ou la réalisation de tutoriels et de vidéos de microlearning (par l'IP)."
+        },
+        audacity: {
+            title: "Audacity.mp3",
+            logo: "image/audacity.png",
+            desc: "<b>Description :</b> Enregistrement et montage audio.<br><br><b>Application :</b> Création de podcasts éducatifs ou de ressources de compréhension orale sur mesure pour les cours de langues."
+        },
+        obs: {
+            title: "OBS_Studio.exe",
+            logo: "image/obs.png",
+            color: "color-3",
+            desc: "<b>Description :</b> Logiciel open-source de capture d'écran et d'enregistrement vidéo/audio en direct (screencasting).<br><br><b>Application :</b><br>• <i>L'enseignant :</i> Enregistrer des démonstrations ou des cours magistraux enrichis.<br>• <i>IP :</i> Créer des tutoriels vidéo techniques avec incrustation de la webcam pour humaniser la formation asynchrone et guider les apprenants pas-à-pas."
+        },
+        zoom: {
+            title: "Visio_Tools.exe",
+            logo: "image/zoom.png",
+            desc: "<b>Description :</b> Plateformes de visioconférence (Zoom, Teams) et de travail collaboratif institutionnelles.<br><br><b>Application :</b><br>• <i>L'enseignant :</i> Anime des cours synchrones à distance, utilise les salles de petits groupes (breakout rooms).<br>• <i>IP :</i> Accompagner les formateurs dans la prise en main de ces outils, organiser des webinaires."
+        },
+        discord: {
+            title: "Discord.exe",
+            logo: "image/discord.jpg",
+            desc: "<b>Description :</b> Plateforme de communication textuelle, vocale et vidéo par serveurs et canaux.<br><br><b>Application :</b> Créer des communautés d'apprenants (social learning), encourager la pratique informelle de la langue cible dans un environnement moins institutionnel, gérer des projets de groupe."
+        },
+        padlet: {
+            title: "Padlet_Murs.url",
+            logo: "image/padlet.png",
+            desc: "<b>Description :</b> Création de murs collaboratifs, de frises chronologiques ou de cartes interactives pour collecter, organiser et partager des ressources multimédias (textes, audios, vidéos, liens).<br><br><b>Application :</b><br>• <i>L'enseignant :</i> Organise des séances de brainstorming en début de séquence, crée un espace où les apprenants déposent leurs productions pour favoriser l'évaluation par les pairs, ou centralise les ressources d'une leçon.<br>• <i>IP :</i> Concevoir des espaces d'échange asynchrones pour briser l'isolement dans les formations à distance, créer une « boîte à outils » partagée, ou mettre en place un recueil d'attentes (feedback) lors de la phase d'analyse."
+        },
+        webdev: {
+            title: "Code_Web.html",
+            logo: "image/html.jpg",
+            desc: "<b>Description :</b> Compréhension de la structure (HTML), de la mise en forme (CSS) et de l'interactivité basique (JS) d'une page web.<br><br><b>Application :</b> Personnaliser l'affichage des cours sur une plateforme, intégrer proprement des iframes (code d'intégration), ou corriger des bugs d'affichage mineurs dans un module e-learning."
+        },
+        github: {
+            title: "GitHub.git",
+            logo: "image/github.png",
+            desc: "<b>Description :</b> Plateforme de gestion de versions et de collaboration.<br><br><b>Application :</b> Héberger des projets web (portfolio), collaborer sur du code, ou participer au développement de Ressources Éducatives Libres (OER)."
+        },
+        notion: {
+            title: "Notion.db",
+            logo: "image/notion.png",
+            desc: "<b>Description :</b> Espace de travail tout-en-un (bases de données, prise de notes, gestion de tâches).<br><br><b>Application :</b><br>• <i>L'enseignant :</i> Organise ses progressions didactiques, mutualise des ressources.<br>• <i>IP :</i> Gérer des projets d'ingénierie pédagogique (cahier des charges, suivi de production, storyboard collaboratif)."
+        },
+        office: {
+            title: "Suite_Office.docx",
+            logo: "image/suite_office.png",
+            desc: "<b>Description :</b> Maîtrise des outils de traitement de texte et de tableur (Word, Excel...).<br><br><b>Application :</b> Rédaction de scénarios pédagogiques détaillés, ingénierie de formation (tableaux de suivi des compétences, notes...)."
+        },
+        moodle: {
+            title: "Moodle_LMS.sys",
+            logo: "image/moodle.png",
+            desc: "<b>Description :</b> Plateforme de gestion de l'apprentissage (Learning Management System type Moodle, Canvas).<br><br><b>Application :</b> C'est l'outil central de l'ingénieur pédagogique : paramétrer des cours, intégrer des ressources, gérer les inscriptions et suivre la progression et l'évaluation des apprenants."
+        }
+    };
+
+    // 3. Fonction pour injecter la nouvelle mise en page avec l'image
+    function openSkill(event, skillId) {
+        event.stopPropagation();
+        const skill = skillsData[skillId];
+        
+        // On appelle la fonction de ton script pour ouvrir la fenêtre (on laisse l'icône vide)
+        launchApp(skill.title, skill.desc, "", "");
+        
+        // On vient écraser le contenu avec un design sur-mesure contenant le logo
+        const dynamicContent = document.getElementById('modal-dynamic-content');
+        dynamicContent.innerHTML = `
+            <div style="display: flex; align-items: flex-start; gap: 20px; margin-bottom: 25px; border-bottom: 2px dashed #aaa; padding-bottom: 20px;">
+                
+                <div style="width: 80px; height: 80px; flex-shrink: 0; background: #fff; border: 2px solid #2d2d2d; border-radius: 12px; display: flex; justify-content: center; align-items: center; padding: 5px; box-shadow: 3px 3px 0px rgba(0,0,0,0.15);">
+                    <img src="${skill.logo}" alt="Logo ${skill.title}" style="max-width: 100%; max-height: 100%; object-fit: contain;">
+                </div>
+                
+                <div style="padding-top: 5px;">
+                    <h2 style="margin: 0 0 10px 0; color: #2d2d2d; font-size: 22px; font-family: Arial, sans-serif;">${skill.title}</h2>
+                    <span style="font-size: 11px; font-family: 'Courier New', monospace; background: #c46473; color: white; font-weight: bold; padding: 4px 10px; border-radius: 12px; letter-spacing: 1px;">LOGICIEL / OUTIL</span>
+                </div>
+                
+            </div>
+            
+            <div style="font-size: 14px; line-height: 1.6; color: #333; font-family: Arial, sans-serif;">
+                ${skill.desc}
+            </div>
+        `;
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mes projets - Selsabil BIDA</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+    /* ---------------------------------------------------
+       AESTHETIC "MODERN RETRO" POUR L'EXPLORATEUR
+    --------------------------------------------------- */
+    .explorer-body {
+        background-color: #f1ebd9 !important; 
+        border: none !important;
+        border-top: 2px solid #2d2d2d !important;
+        padding: 15px !important;
+        gap: 15px; 
+    }
+
+    .sidebar-tree {
+        background: #ffffff !important;
+        border: 2px solid #2d2d2d !important;
+        border-radius: 15px; 
+        box-shadow: 4px 4px 0px rgba(0,0,0,0.1); 
+        padding: 15px !important;
+        border-right: 2px solid #2d2d2d !important;
+    }
+
+    .sidebar-tree li {
+        padding: 10px !important;
+        border-radius: 8px;
+        transition: all 0.2s ease;
+        margin-bottom: 5px !important;
+    }
+
+    .sidebar-tree li:hover {
+        background: #f1ebd9;
+        transform: translateX(5px); 
+    }
+
+    .active-folder {
+        background-color: #FFE7AB !important; 
+        color: #2d2d2d !important;
+        font-weight: bold;
+        border: 2px solid #2d2d2d;
+        box-shadow: 2px 2px 0px rgba(0,0,0,0.15);
+    }
+    
+    .tree-line { display: none; } 
+
+    .file-grid {
+        background: #ffffff !important;
+        border: 2px solid #2d2d2d !important;
+        border-radius: 15px;
+        box-shadow: 4px 4px 0px rgba(0,0,0,0.1);
+        padding: 25px !important;
+    }
+
+    .file-item {
+        background: #f9f9f9;
+        border: 2px solid transparent !important;
+        border-radius: 12px !important;
+        padding: 15px 10px !important;
+        transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1) !important;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    }
+
+    .file-item:hover {
+        background: #ffffff !important;
+        border: 2px solid #2d2d2d !important; 
+        transform: translateY(-8px) !important; 
+        box-shadow: 0 8px 15px rgba(0,0,0,0.15) !important;
+    }
+
+    .category-title {
+        font-family: Arial, sans-serif !important;
+        font-size: 16px !important;
+        color: #2d2d2d !important;
+        border-bottom: 2px dashed #ccc !important;
+        padding-bottom: 8px !important;
+        margin-top: 25px !important;
+        margin-bottom: 15px !important;
+    }
+    .category-title::before { content: none !important; }
+
+    .menu-bar, .address-bar-container {
+        background: #f7f6f1 !important;
+        border-bottom: 1px solid #ddd !important;
+    }
+    .address-input {
+        border: 1px solid #ccc !important;
+        border-radius: 6px;
+        background: #ffffff !important;
+        box-shadow: none !important;
+        padding: 4px 8px !important;
+    }
+    </style>
+</head>
+<body>
+
+<section class="window" style="max-width: 900px;">
+    <div class="window-header">
+        <span>C:\Users\Selsabil\Projets</span>
+        <div class="window-icons nav-buttons">
+            <a href="index.html" title="Retour à l'accueil"><i class="fa-solid fa-house"></i></a>
+        </div>
+        <div class="window-icons nav-buttons">
+            <a href="parcours.html" title="Mon parcours"><i class="fa-solid fa-briefcase"></i></a>
+            <a href="competences.html" title="Compétences"><i class="fa-solid fa-toolbox"></i></a>
+        </div>
+    </div>
+
+    <div class="menu-bar">
+        <span>Fichier</span><span>Édition</span><span>Affichage</span><span>Outils</span><span>Aide</span>
+    </div>
+    
+    <div class="address-bar-container">
+        <span>Adresse :</span>
+        <div class="address-input">C:\Mes Documents\Projets_Pédagogiques</div>
+    </div>
+
+    <div class="explorer-body">
+        
+        <div class="sidebar-tree">
+            <ul>
+                <li><i class="fa-solid fa-desktop"></i> Bureau</li>
+                <li><i class="fa-solid fa-hard-drive"></i> Disque Local (C:)</li>
+                <li class="active-folder"><span class="tree-line"></span><i class="fa-solid fa-folder-open" style="color: #e8c647;"></i> Projets</li>
+                <li><span class="tree-line"></span><i class="fa-solid fa-trash-can"></i> Corbeille</li>
+                <li><span class="tree-line"></span><i class="fa-solid fa-lightbulb" style="color: #f1c40f;"></i> Perspectives</li>
+            </ul>
+        </div>
+
+        <div class="file-grid">
+            
+    <div class="file-item" 
+         data-title="Site Web Portfolio" 
+         data-desc="<div style='padding-right:10px; font-family:Arial, sans-serif;'>
+            
+            <div style='display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:15px;'>
+                <h3 style='color:#003399; margin:0;'>Portfolio Interactif</h3>
+                <span style='background:#4a90e2; color:white; padding:4px 10px; border-radius:12px; font-size:11px; font-weight:bold; white-space:nowrap; margin-left:10px;'><i class='fa-solid fa-code'></i> Code Natif</span>
+            </div>
+
+            <p style='margin-bottom:15px; font-size:13px; color:#444; line-height:1.5;'>Conception et développement intégral de mon portfolio sous la forme d'un système d'exploitation interactif (« Modern Retro »). L'objectif est de proposer une expérience de navigation immersive et de démontrer concrètement mes compétences techniques.</p>
+
+            <div style='display:grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap:10px; margin-bottom:20px;'>
+                
+                <div style='background:#f4f6f8; border-left:3px solid #27ae60; padding:10px; border-radius:4px;'>
+                    <b style='color:#2d2d2d; font-size:13px;'><i class='fa-solid fa-graduation-cap'></i> Le Défi (Master)</b><br>
+                    <span style='font-size:12px; color:#555;'>Prouver ma maîtrise du web en codant l'intégralité du site moi-même, sans outil de création de site.</span>
+                </div>
+                
+                <div style='background:#f4f6f8; border-left:3px solid #e67e22; padding:10px; border-radius:4px;'>
+                    <b style='color:#2d2d2d; font-size:13px;'><i class='fa-solid fa-book-open-reader'></i> Autodidacte</b><br>
+                    <span style='font-size:12px; color:#555;'>Apprentissage du HTML l'été, puis formation au CSS/JS sur le tas via Codecademy et YouTube.</span>
+                </div>
+
+                <div style='background:#f4f6f8; border-left:3px solid #8e44ad; padding:10px; border-radius:4px;'>
+                    <b style='color:#2d2d2d; font-size:13px;'><i class='fa-solid fa-robot'></i> Assistance IA</b><br>
+                    <span style='font-size:12px; color:#555;'>Utilisation de Gemini comme tuteur pour déboguer et créer la logique des fenêtres superposables.</span>
+                </div>
+
+            </div>
+
+            <p style='margin-bottom:10px;'><small><em><i class='fa-solid fa-magnifying-glass-plus'></i> Cliquez sur les images pour les agrandir.</em></small></p>
+            <div style='display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 20px;'>
+                <img src='image/screen_code1.png' alt='Aperçu Portfolio 1' onclick='openImage(this.src)' style='width:100%; height:130px; object-fit:cover; border-radius:8px; border:1px solid #ddd; cursor:zoom-in;'>
+                <img src='image/screen_code2.png' alt='Aperçu Portfolio 2' onclick='openImage(this.src)' style='width:100%; height:130px; object-fit:cover; border-radius:8px; border:1px solid #ddd; cursor:zoom-in;'>
+            </div>
+
+            <div style='background:#f1ebd9; padding:15px; border-radius:8px; border:2px solid #2d2d2d;'>
+                <h4 style='color:#003399; margin-top:0; margin-bottom:15px; font-size:15px; border-bottom:1px solid #003399; padding-bottom:5px;'><i class='fa-solid fa-layer-group'></i> Stack Technique & UX</h4>
+                <div style='display:grid; grid-template-columns: 1fr 1fr; gap:15px; font-size:13px;'>
+                    <div>
+                        <h5 style='margin:0 0 5px 0; color:#2d2d2d;'><i class='fa-solid fa-laptop-code'></i> Développement</h5>
+                        <ul style='margin:0; padding-left:15px; list-style-type:square; line-height:1.5; color:#444;'>
+                            <li><b>Structure :</b> HTML5 sémantique</li>
+                            <li><b>Style :</b> CSS3 (Grid, Flexbox, Animations)</li>
+                            <li><b>Logique :</b> JavaScript (DOM, Modales)</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h5 style='margin:0 0 5px 0; color:#2d2d2d;'><i class='fa-solid fa-gamepad'></i> Expérience (UX)</h5>
+                        <ul style='margin:0; padding-left:15px; list-style-type:square; line-height:1.5; color:#444;'>
+                            <li><b>Concept :</b> Navigation immersive et thématique</li>
+                            <li><b>Aesthetic :</b> Bureau d'ordinateur rétro</li>
+                            <li><b>Ergonomie :</b> Fenêtres dynamiques superposables</li>
+                        </ul>
+                    </div>
+                </div>
+                <div style='margin-top:15px; padding-top:12px; border-top:1px dashed #2d2d2d; font-size:13px;'>
+                    <p style='margin:0 0 5px 0; color:#c46473;'><b><i class='fa-solid fa-bullseye'></i> Utilité & Plus-value :</b></p>
+                    <p style='margin:0; font-style:italic; line-height:1.4; color:#333;'>Créer ce site « from scratch » (de zéro) prouve une maîtrise des langages web fondamentaux. C'est un atout majeur en ingénierie pédagogique, car cela permet de s'affranchir des limites des outils-auteurs classiques et de concevoir des intégrations sur-mesure dans n'importe quelle plateforme (LMS).</p>
+                </div>
+            </div>
+         </div>"
+         data-link="https://github.com/ton-pseudo/portfolio">
+        <i class="fa-solid fa-globe file-icon" style="color: #e995cd;"></i>
+        <div class="file-name">Site_Web.html</div>
+        <div class="file-desc">Portfolio Interactif</div>
+    </div>
+
+    <div class="file-item" 
+         data-title="Capsule Vidéo : Présentation Genially" 
+         data-desc="<div style='padding-right:10px; font-family:Arial, sans-serif;'>
+            
+            <div style='display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:15px;'>
+                <h3 style='color:#003399; margin:0;'>Tutoriel Vidéo & Accessibilité</h3>
+                <span style='background:#e67e22; color:white; padding:4px 10px; border-radius:12px; font-size:11px; font-weight:bold; white-space:nowrap; margin-left:10px;'><i class='fa-solid fa-users'></i> Projet de groupe</span>
+            </div>
+            
+            <div style='display:grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap:10px; margin-bottom:20px;'>
+                
+                <div style='background:#f4f6f8; border-left:3px solid #4a90e2; padding:10px; border-radius:4px;'>
+                    <b style='color:#2d2d2d; font-size:13px;'><i class='fa-solid fa-bullseye'></i> Objectif</b><br>
+                    <span style='font-size:12px; color:#555;'>Former des enseignants : présentation des fonctionnalités, avantages/limites et 3 cas d'usage concrets.</span>
+                </div>
+                
+                <div style='background:#f4f6f8; border-left:3px solid #9b59b6; padding:10px; border-radius:4px;'>
+                    <b style='color:#2d2d2d; font-size:13px;'><i class='fa-solid fa-people-group'></i> Organisation</b><br>
+                    <span style='font-size:12px; color:#555;'>Réalisation collaborative et co-scénarisation avec deux collègues de promotion.</span>
+                </div>
+
+                <div style='background:#f4f6f8; border-left:3px solid #e74c3c; padding:10px; border-radius:4px;'>
+                    <b style='color:#2d2d2d; font-size:13px;'><i class='fa-solid fa-clapperboard'></i> Technique</b><br>
+                    <span style='font-size:12px; color:#555;'>Captation audio/écran via <b>OBS Studio</b> et montage dynamique sur <b>CapCut</b>.</span>
+                </div>
+
+            </div>
+            
+            <div style='border-radius:8px; border:1px solid #ddd; overflow:hidden; background:#000; margin-bottom:20px;'>
+                <video width='100%' controls style='display:block;'>
+                    <source src='video/video_genially.mp4' type='video/mp4'>
+                    Votre navigateur ne supporte pas la lecture de cette vidéo.
+                </video>
+            </div>
+            
+            <div style='background:#f1ebd9; padding:15px; border-radius:8px; border:2px solid #2d2d2d;'>
+                <h4 style='color:#003399; margin-top:0; margin-bottom:15px; font-size:15px; border-bottom:1px solid #003399; padding-bottom:5px;'><i class='fa-solid fa-clipboard-list'></i> Évaluation technique : Montage & Diffusion</h4>
+                <div style='display:grid; grid-template-columns: 1fr 1fr; gap:15px; font-size:13px;'>
+                    <div>
+                        <h5 style='margin:0 0 5px 0; color:#2d2d2d;'><i class='fa-solid fa-film'></i> Production</h5>
+                        <ul style='margin:0; padding-left:15px; list-style-type:square; line-height:1.5; color:#444;'>
+                            <li><b>Outils :</b> OBS Studio & CapCut</li>
+                            <li><b>Accessibilité :</b> Sous-titres incrustés</li>
+                            <li><b>Format :</b> MP4 / 1080p</li>
+                            <li><b>Impact écolo :</b> Moyen (Stockage vidéo)</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h5 style='margin:0 0 5px 0; color:#2d2d2d;'><i class='fa-solid fa-eye'></i> Expérience (UX)</h5>
+                        <ul style='margin:0; padding-left:15px; list-style-type:square; line-height:1.5; color:#444;'>
+                            <li><b>Aesthetic :</b> Dynamique, pro</li>
+                            <li><b>Rythme :</b> Séquençage rapide</li>
+                            <li><b>Usage :</b> Tutoriel enseignant</li>
+                            <li><b>Faisabilité :</b> Demande du temps</li>
+                        </ul>
+                    </div>
+                </div>
+                <div style='margin-top:15px; padding-top:12px; border-top:1px dashed #2d2d2d; font-size:13px;'>
+                    <p style='margin:0 0 5px 0; color:#c46473;'><b><i class='fa-solid fa-bullseye'></i> Utilité & Plus-value :</b></p>
+                    <p style='margin:0; font-style:italic; line-height:1.4; color:#333;'>Le format vidéo asynchrone permet une démonstration pas-à-pas très visuelle, idéale pour la prise en main d'un nouvel outil numérique. L'alliance de la captation d'écran et de la voix off offre un accompagnement rassurant et efficace pour les enseignants en formation.</p>
+                </div>
+            </div>
+         </div>"
+         data-link="">
+        <i class="fa-solid fa-file-video file-icon color-3"></i>
+        <div class="file-name">Genially_Pres.mp4</div>
+        <div class="file-desc">Capsule pédagogique</div>
+    </div>
+
+    <div class="category-title">Activités pédagogiques</div>
+    
+    <div class="file-item" style="grid-column: span 2;" 
+         data-title="Atelier FLE - LE PETIT PRINCE" 
+         data-desc="<div style='padding-right:10px;'>
+            <p><b>📌 CONTEXTE :</b><br>
+            Cible : Apprenants de niveau A2, locuteurs de langues romanes (ES, IT, PT, RO).<br>
+            Objectif : Comprendre la place du pronom objet (moi/me) à l'impératif vs indicatif via l'intercompréhension.</p>
+            
+            <p style='margin-top:20px; color:#003399;'><b>🎮 ACTIVITÉ 1 : Jeu d'association</b></p>
+            <div style='width: 100%; display: flex; justify-content: center; margin: 10px 0 20px 0; background: #f9f9f9; padding: 10px; border-radius: 8px; border: 1px solid #ddd; box-sizing: border-box;'>
+                <iframe style='max-width:100%; border-radius: 4px;' src='https://wordwall.net/fr/embed/043ea9a151a24e19b8f28363b3c87a62?themeId=50&templateId=2&fontStackId=0' width='500' height='380' frameborder='0' allowfullscreen></iframe>
+            </div>
+
+            <p style='margin-top:20px; color:#003399;'><b>🧩 ACTIVITÉ 2 : Phase de puzzle</b><br>
+            <span style='color:#333; font-style:italic;'>Objectif : Remettre les phrases dans l'ordre pour consolider la structure syntaxique (kinesthésique).</span></p>
+            <div style='width: 100%; display: flex; justify-content: center; margin: 10px 0 20px 0; background: #f9f9f9; padding: 10px; border-radius: 8px; border: 1px solid #ddd; box-sizing: border-box;'>
+                <iframe style='max-width:100%; border-radius: 4px;' src='https://wordwall.net/fr/embed/978bbb2299284f09a2c3b9438c2163c8?themeId=43&templateId=72&fontStackId=0' width='500' height='380' frameborder='0' allowfullscreen></iframe>
+            </div>
+            
+            <p><b>🔍 RÉFLEXION CRITIQUE :</b></p>
+            <p><b>✅ Points forts (Approche Inductive) :</b><br>
+            Dimension kinesthésique : La manipulation physique des cartes permet de « sentir » le mouvement syntaxique.<br>
+            Sécurisation : L'utilisation d'un texte universel connu (« Le Petit Prince ») réduit l'anxiété.</p>
+            <p><b>⚠️ Limites :</b><br>
+            Spécificité du public : L'activité repose sur la transparence des langues latines.<br>
+            Risque de surcharge : Le texte littéraire demande un étayage lexical solide en amont.</p>
+            <p><b>🚀 Perspectives d'amélioration :</b><br>
+            Systématisation orale : Ajouter une phase de jeu de rôle.<br>
+            Formalisation : Créer une fiche mémo visuelle (carte mentale).</p>
+
+            <div style='background:#f1ebd9; padding:15px; border-radius:8px; border:2px solid #2d2d2d; font-family:Arial, sans-serif; margin-top:20px;'>
+                <h4 style='color:#003399; margin-top:0; margin-bottom:15px; font-size:15px; border-bottom:1px solid #003399; padding-bottom:5px;'><i class='fa-solid fa-clipboard-list'></i> Audit & Évaluation de l'outil : Wordwall</h4>
+                <div style='display:grid; grid-template-columns: 1fr 1fr; gap:15px; font-size:13px;'>
+                    <div>
+                        <h5 style='margin:0 0 5px 0; color:#2d2d2d;'><i class='fa-solid fa-gears'></i> Technique & Admin</h5>
+                        <ul style='margin:0; padding-left:15px; list-style-type:square; line-height:1.5; color:#444;'>
+                            <li><b>Coût :</b> Freemium (créations limitées en gratuit)</li>
+                            <li><b>Format :</b> En ligne (Web)</li>
+                            <li><b>Connexion :</b> Prof (Oui), Élèves (Non)</li>
+                            <li><b>RGPD :</b> Bon (anonymat possible via lien)</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h5 style='margin:0 0 5px 0; color:#2d2d2d;'><i class='fa-solid fa-desktop'></i> Expérience (UX)</h5>
+                        <ul style='margin:0; padding-left:15px; list-style-type:square; line-height:1.5; color:#444;'>
+                            <li><b>Aesthetic :</b> Très ludique, beaux thèmes</li>
+                            <li><b>Features :</b> Switch de modèles automatisé</li>
+                            <li><b>Faisabilité :</b> Prise en main instantanée</li>
+                        </ul>
+                    </div>
+                </div>
+                <div style='margin-top:15px; padding-top:12px; border-top:1px dashed #2d2d2d; font-size:13px;'>
+                    <p style='margin:0 0 5px 0; color:#c46473;'><b><i class='fa-solid fa-bullseye'></i> Utilité & Plus-value :</b></p>
+                    <p style='margin:0; font-style:italic; line-height:1.4; color:#333;'>L'atout majeur de Wordwall est sa capacité à générer plusieurs types de jeux (roue, quiz, paires, etc.) à partir d'une seule liste de données entrées par l'enseignant. Cela représente un gain de temps considérable pour l'ingénierie d'exercices d'entraînement, tout en offrant un design très attractif pour l'apprenant.</p>
+                </div>
+            </div>
+
+         </div>"
+         data-link="doc/doss-inter.pdf"> 
+        <i class="fa-solid fa-puzzle-piece file-icon color-2"></i>
+        <div class="file-name">Intercompréhension.pdf</div>
+        <div class="file-desc">Wordwall</div>
+    </div>
+
+    <div class="file-item" 
+     data-title="TICE en présentiel - Real Estate Ad (Padlet)" 
+     data-desc="<div style='padding-right:10px;'><p><b>📌 CONTEXTE :</b> Activité réaliser dans le cadre d'un cours 'TICE en présentiel'. 
+        Cours d'anglais universitaire (LANSAD). Objectif : Rédiger et designer une annonce de location attractive sur un mur collaboratif (Padlet).</p><p><b>🔍 RÉFLEXION CRITIQUE :</b></p><p><b>✅ Points forts :</b> Engagement créatif (choix de la ville, visuels). Le mur Padlet offre une exposition immédiate aux travaux des autres (évaluation par les pairs).</p><p><b>⚠️ Limites :</b> Fossé numérique observé. Risque que l'effort esthétique prenne le pas sur la rigueur grammaticale.</p><p><b>🚀 Amélioration :</b> Coupler l'activité écrite avec une présentation orale (« Pitch your flat »).</p><div style='margin-bottom:20px;'><a href='doc/activité_TICE_presentiel.pdf' download='activité_TICE_presentiel.pdf' style='display:inline-flex; align-items:center; gap:8px; padding:10px 15px; background-color:#d32f2f; color:#ffffff; border-radius:5px; text-decoration:none; font-size:14px; font-weight:500;'><i class='fa-solid fa-file-arrow-down'></i> Télécharger l'activité (PDF)</a></div><div style='background:#f1ebd9; padding:15px; border-radius:8px; border:2px solid #2d2d2d; font-family:Arial, sans-serif;'><h4 style='color:#003399; margin-top:0; margin-bottom:15px; font-size:15px; border-bottom:1px solid #003399; padding-bottom:5px;'><i class='fa-solid fa-clipboard-list'></i> Audit & Évaluation de l'outil : Padlet</h4><div style='display:grid; grid-template-columns: 1fr 1fr; gap:15px; font-size:13px;'><div><h5 style='margin:0 0 5px 0; color:#2d2d2d;'><i class='fa-solid fa-gears'></i> Technique & Admin</h5><ul style='margin:0; padding-left:15px; list-style-type:square; line-height:1.5; color:#444;'><li><b>Coût :</b> Freemium (limité à 3 murs gratuits)</li><li><b>Connexion :</b> Créateur (Oui), Participants (Non)</li><li><b>Support :</b> Web, iOS, Android (très réactif)</li><li><b>RGPD :</b> Excellent (Dépôt anonyme possible)</li></ul></div><div><h5 style='margin:0 0 5px 0; color:#2d2d2d;'><i class='fa-solid fa-desktop'></i> Expérience (UX)</h5><ul style='margin:0; padding-left:15px; list-style-type:square; line-height:1.5; color:#444;'><li><b>Aesthetic :</b> Moderne, fonds personnalisables</li><li><b>Features :</b> Mur, Toile, Frise chrono, Carte</li><li><b>Partage :</b> Lien, QR Code, Embed</li></ul></div></div><div style='margin-top:15px; padding-top:12px; border-top:1px dashed #2d2d2d; font-size:13px;'><p style='margin:0 0 5px 0; color:#c46473;'><b><i class='fa-solid fa-bullseye'></i> Utilité & Plus-value :</b></p><p style='margin:0; font-style:italic; line-height:1.4; color:#333;'>L'outil parfait pour la collaborativité asynchrone et le brainstorming. La contrainte du freemium (3 murs) oblige l'enseignant à archiver et recycler ses espaces, mais la prise en main par les élèves est instantanée.</p></div></div></div>"
+     data-link="https://padlet.com/embed/2m0013bi3sarvksw?play=1"> 
+    <i class="fa-solid fa-house-laptop file-icon color-4"style="color: #ba89c0;"></i>
+    <div class="file-name">Immo_Padlet.exe</div>
+    <div class="file-desc">Niveau A2/B1</div>
+    </div>
+
+    <div class="category-title">Conception d'activités numériques</div>
+
+    <div class="file-item" 
+     data-title="Gestion de Classe Numérique" 
+     data-desc="<div style='padding-right:10px;'><p><em>Cliquez sur les images pour les agrandir.</em></p><img src='image/classroomscreen.png' alt='Aperçu' onclick='openImage(this.src)' style='width:100%; border-radius:8px; border:1px solid #ddd; cursor:zoom-in; margin:10px 0;'><p><strong>🎯 Classroomscreen : Structuration</strong></p><ul style='margin-bottom:15px; padding-left:20px;'><li><strong>Gestion temporelle :</strong> Chronomètre et horloge.</li><li><strong>Cadre social :</strong> Widget 'Work Together' et feu tricolore.</li></ul><hr style='margin: 20px 0; border: 0; border-top: 1px solid #eee;'><div style='display: flex; gap: 10px; margin-bottom: 10px;'><img src='image/digiscreen_1.jpg' alt='Aperçu 1' onclick='openImage(this.src)' style='width:48%; border-radius:8px; border:1px solid #ddd; cursor:zoom-in;'><img src='image/digiscreen_2.jpg' alt='Aperçu 2' onclick='openImage(this.src)' style='width:48%; border-radius:8px; border:1px solid #ddd; cursor:zoom-in;'></div><p><strong>🛡️ Digiscreen : Outil libre</strong></p><ul style='padding-left:20px; margin-bottom:20px;'><li><strong>Polyvalence :</strong> Écrans adaptés aux travaux de groupe ou rituels.</li></ul><div style='background:#f1ebd9; padding:15px; border-radius:8px; border:2px solid #2d2d2d; font-family:Arial, sans-serif;'><h4 style='color:#003399; margin-top:0; margin-bottom:15px; font-size:15px; border-bottom:1px solid #003399; padding-bottom:5px;'><i class='fa-solid fa-clipboard-list'></i> Audit : Classroomscreen vs Digiscreen</h4><div style='display:grid; grid-template-columns: 1fr 1fr; gap:15px; font-size:13px;'><div><h5 style='margin:0 0 5px 0; color:#2d2d2d;'><i class='fa-solid fa-gears'></i> Technique & Admin</h5><ul style='margin:0; padding-left:15px; list-style-type:square; line-height:1.5; color:#444;'><li><b>Coût :</b> Freemium (CS) / 100% Gratuit (Digiscreen)</li><li><b>Connexion :</b> Aucune requise pour la base</li><li><b>Support :</b> Conçu pour VNI/TBI en classe</li><li><b>RGPD :</b> Digiscreen est souverain et éthique (La Digitale).</li></ul></div><div><h5 style='margin:0 0 5px 0; color:#2d2d2d;'><i class='fa-solid fa-desktop'></i> Expérience (UX)</h5><ul style='margin:0; padding-left:15px; list-style-type:square; line-height:1.5; color:#444;'><li><b>Aesthetic :</b> Belles images de fond (CS)</li><li><b>Features :</b> Tirage au sort, Timer, QR Code, Sondage</li><li><b>Faisabilité :</b> Immédiate, aucun prérequis.</li></ul></div></div><div style='margin-top:15px; padding-top:12px; border-top:1px dashed #2d2d2d; font-size:13px;'><p style='margin:0 0 5px 0; color:#c46473;'><b><i class='fa-solid fa-bullseye'></i> Utilité & Plus-value :</b></p><p style='margin:0; font-style:italic; line-height:1.4; color:#333;'>Des couteaux suisses pour la gestion de classe. Ils structurent l'espace-temps de la leçon et rassurent les élèves. Digiscreen est à privilégier pour son respect absolu du RGPD et sa logique de bien commun numérique.</p></div></div></div>"
+     data-link="">
+    <i class="fa-solid fa-desktop file-icon color-4"></i>
+    <div class="file-name">Tableaux.exe</div>
+    <div class="file-desc">Gestion de classe</div>
+    </div>
+
+    <div class="file-item" 
+     data-title="Productions numériques (Miro)" 
+     data-desc="<div style='display:block; padding-right:10px;'>
+        <p style='margin-bottom:15px;'>Supports interactifs pour la révision de sujets spécifiques (chronologie des temps en anglais, prétérit, WILL, WOULD...) créés sur le tableau blanc collaboratif Miro.</p>
+        
+        <p style='margin-bottom:10px;'><small><em><i class='fa-solid fa-magnifying-glass-plus'></i> Cliquez sur les images pour les agrandir.</em></small></p>
+        
+        <div style='display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 20px;'>
+            <img src='image/miro1.jpg' alt='Mindmap Miro 1' onclick='openImage(this.src)' style='width:100%; height:120px; object-fit:cover; border-radius:8px; border:1px solid #ddd; cursor:zoom-in;'>
+            <img src='image/miro2.jpg' alt='Mindmap Miro 2' onclick='openImage(this.src)' style='width:100%; height:120px; object-fit:cover; border-radius:8px; border:1px solid #ddd; cursor:zoom-in;'>
+            <img src='image/miro3.jpg' alt='Mindmap Miro 3' onclick='openImage(this.src)' style='width:100%; height:120px; object-fit:cover; border-radius:8px; border:1px solid #ddd; cursor:zoom-in;'>
+            <img src='image/miro4.jpg' alt='Mindmap Miro 4' onclick='openImage(this.src)' style='width:100%; height:120px; object-fit:cover; border-radius:8px; border:1px solid #ddd; cursor:zoom-in;'>
+            <img src='image/miro5.jpg' alt='Mindmap Miro 5' onclick='openImage(this.src)' style='grid-column: span 2; width:100%; max-height:150px; object-fit:cover; border-radius:8px; border:1px solid #ddd; cursor:zoom-in;'>
+        </div>
+        
+        <div style='background:#f1ebd9; padding:15px; border-radius:8px; border:2px solid #2d2d2d; font-family:Arial, sans-serif;'>
+            <h4 style='color:#003399; margin-top:0; margin-bottom:15px; font-size:15px; border-bottom:1px solid #003399; padding-bottom:5px;'><i class='fa-solid fa-clipboard-list'></i> Audit & Évaluation de l'outil : Miro</h4>
+            <div style='display:grid; grid-template-columns: 1fr 1fr; gap:15px; font-size:13px;'>
+                <div>
+                    <h5 style='margin:0 0 5px 0; color:#2d2d2d;'><i class='fa-solid fa-gears'></i> Technique & Admin</h5>
+                    <ul style='margin:0; padding-left:15px; list-style-type:square; line-height:1.5; color:#444;'>
+                        <li><b>Coût :</b> Freemium (3 tableaux éditables)</li>
+                        <li><b>Connexion :</b> Créateur (Oui), Visiteurs (Non)</li>
+                        <li><b>Support :</b> PC, Tablettes (app dédiée conseillée)</li>
+                        <li><b>RGPD :</b> Standard entreprise</li>
+                    </ul>
+                </div>
+                <div>
+                    <h5 style='margin:0 0 5px 0; color:#2d2d2d;'><i class='fa-solid fa-desktop'></i> Expérience (UX)</h5>
+                    <ul style='margin:0; padding-left:15px; list-style-type:square; line-height:1.5; color:#444;'>
+                        <li><b>Aesthetic :</b> Très épuré, espace infini</li>
+                        <li><b>Features :</b> Post-its, Mindmaps, Liens, Vote</li>
+                        <li><b>Partage :</b> Collaboratif en temps réel</li>
+                    </ul>
+                </div>
+            </div>
+            <div style='margin-top:15px; padding-top:12px; border-top:1px dashed #2d2d2d; font-size:13px;'>
+                <p style='margin:0 0 5px 0; color:#c46473;'><b><i class='fa-solid fa-bullseye'></i> Utilité & Plus-value :</b></p>
+                <p style='margin:0; font-style:italic; line-height:1.4; color:#333;'>Un outil d'ingénierie pour le mind-mapping ou la gestion de projet. En classe, l'aspect visuel globalisant aide énormément à la compréhension des systèmes complexes (comme la grammaire).</p>
+            </div>
+        </div>
+      </div>"
+     data-link="">
+    <i class="fa-solid fa-wand-magic-sparkles file-icon" style="color: #FFD700;"></i>
+    <div class="file-name">Mindmap_Miro.exe</div>
+    <div class="file-desc">Tableau blanc infini</div>
+</div>
+
+    <div class="file-item" 
+     data-title="Activité Genially" 
+     data-desc="<div style='padding-right:10px;'><h3 style='color:#003399; margin-bottom:10px;'>Présentation Interactive</h3><p style='margin-bottom:15px;'>Création d'un module interactif sur Genially pour dynamiser l'apprentissage et capter l'attention des apprenants (ex: glisser/déposer).</p><div style='width: 100%;'><div style='position: relative; padding-bottom: 56.25%; padding-top: 0; height: 0;'><iframe title='Fridge' frameborder='0' width='1200' height='675' style='position: absolute; top: 0; left: 0; width: 100%; height: 100%; border-radius:8px; border:1px solid #ddd;' src='https://view.genially.com/69a8323051a6f61dbec06058' type='text/html' allowscriptaccess='always' allowfullscreen='true' scrolling='yes' allownetworking='all'></iframe></div></div><p style='margin-top:15px; margin-bottom:20px;'><small><i class='fa-solid fa-expand'></i> <b>Astuce :</b> Interagissez directement avec les éléments.</small></p><div style='background:#f1ebd9; padding:15px; border-radius:8px; border:2px solid #2d2d2d; font-family:Arial, sans-serif;'><h4 style='color:#003399; margin-top:0; margin-bottom:15px; font-size:15px; border-bottom:1px solid #003399; padding-bottom:5px;'><i class='fa-solid fa-clipboard-list'></i> Audit & Évaluation de l'outil : Genially</h4><div style='display:grid; grid-template-columns: 1fr 1fr; gap:15px; font-size:13px;'><div><h5 style='margin:0 0 5px 0; color:#2d2d2d;'><i class='fa-solid fa-gears'></i> Technique & Admin</h5><ul style='margin:0; padding-left:15px; list-style-type:square; line-height:1.5; color:#444;'><li><b>Coût :</b> Freemium</li><li><b>Connexion :</b> Auteur (Oui), Apprenants (Non)</li><li><b>Support :</b> Web (Responsive parfois délicat)</li><li><b>Impact écolo :</b> Moyen (chargement lourd d'images)</li></ul></div><div><h5 style='margin:0 0 5px 0; color:#2d2d2d;'><i class='fa-solid fa-desktop'></i> Expérience (UX)</h5><ul style='margin:0; padding-left:15px; list-style-type:square; line-height:1.5; color:#444;'><li><b>Aesthetic :</b> Très visuel, animations poussées</li><li><b>Features :</b> Gamification, Pop-ups, Drag & Drop</li><li><b>Faisabilité :</b> Demande un temps de conception (IP)</li></ul></div></div><div style='margin-top:15px; padding-top:12px; border-top:1px dashed #2d2d2d; font-size:13px;'><p style='margin:0 0 5px 0; color:#c46473;'><b><i class='fa-solid fa-bullseye'></i> Utilité & Plus-value :</b></p><p style='margin:0; font-style:italic; line-height:1.4; color:#333;'>L'outil-auteur par excellence pour des modules asynchrones ou des escape games. Il apporte un effet « Wahou » qui capte l'attention, mais l'Ingénieur Pédagogique doit veiller à ne pas tomber dans la surcharge cognitive avec trop d'animations inutiles.</p></div></div></div>"
+     data-link="">
+    <i class="fa-solid fa-person-chalkboard file-icon" style="color: #2c3e50;"></i>
+    <div class="file-name">Genially.exe</div>
+    <div class="file-desc">Module interactif</div>
+    </div>
+
+    <div class="file-item" 
+         data-title="Exercice Interactif - LearningApps" 
+         data-desc="<div style='padding-right:10px;'><h3 style='color:#003399; margin-bottom:10px;'>Ludification des Apprentissages</h3><p style='margin-bottom:15px;'>Création d'un exercice interactif sur LearningApps pour favoriser l'autonomie et l'auto-évaluation des apprenants de manière ludique.</p><div style='width: 100%; background: #f9f9f9; padding: 10px; border-radius: 8px; border: 1px solid #ddd; box-sizing: border-box;'><iframe src='https://learningapps.org/watch?v=pb4jz3wec26' style='border:0px; width:100%; height:500px; border-radius:4px;' allowfullscreen='true' webkitallowfullscreen='true' mozallowfullscreen='true'></iframe></div><p style='margin-top:10px; margin-bottom:20px;'><small><i class='fa-solid fa-gamepad'></i> <b>Astuce :</b> Vous pouvez compléter l'exercice directement ici !</small></p><div style='background:#f1ebd9; padding:15px; border-radius:8px; border:2px solid #2d2d2d; font-family:Arial, sans-serif;'><h4 style='color:#003399; margin-top:0; margin-bottom:15px; font-size:15px; border-bottom:1px solid #003399; padding-bottom:5px;'><i class='fa-solid fa-clipboard-list'></i> Audit & Évaluation de l'outil : LearningApps</h4><div style='display:grid; grid-template-columns: 1fr 1fr; gap:15px; font-size:13px;'><div><h5 style='margin:0 0 5px 0; color:#2d2d2d;'><i class='fa-solid fa-gears'></i> Technique & Admin</h5><ul style='margin:0; padding-left:15px; list-style-type:square; line-height:1.5; color:#444;'><li><b>Coût :</b> 100% Gratuit</li><li><b>Format :</b> En ligne (Web)</li><li><b>Connexion :</b> Compte prof requis, élèves sans compte.</li><li><b>RGPD :</b> Bon (aucune donnée élève récoltée)</li></ul></div><div><h5 style='margin:0 0 5px 0; color:#2d2d2d;'><i class='fa-solid fa-desktop'></i> Expérience (UX)</h5><ul style='margin:0; padding-left:15px; list-style-type:square; line-height:1.5; color:#444;'><li><b>Aesthetic :</b> Datée (Web 2.0)</li><li><b>Features :</b> +20 modèles (mots croisés, textes à trous)</li><li><b>Faisabilité :</b> Très facile et intuitif</li></ul></div></div><div style='margin-top:15px; padding-top:12px; border-top:1px dashed #2d2d2d; font-size:13px;'><p style='margin:0 0 5px 0; color:#c46473;'><b><i class='fa-solid fa-bullseye'></i> Utilité & Plus-value :</b></p><p style='margin:0; font-style:italic; line-height:1.4; color:#333;'>Idéal pour la ludification et l'évaluation formative. Bien que l'interface manque de modernité, la gratuité totale et la facilité de partage en font un outil incontournable (« Ce n'est pas parce qu'on peut faire plus complexe qu'on doit le faire »).</p></div></div></div>"
+         data-link="">
+        <i class="fa-solid fa-pen-to-square file-icon" style="color: #904a0d;"></i>
+        <div class="file-name">LearningApps.exe</div>
+        <div class="file-desc">Exercice interactif</div>
+    </div>
+
+    <div class="category-title">Enseigner en ligne</div>
+
+    <div class="file-item" 
+         data-title="Cours d'anglais en ligne" 
+         data-desc="<div style='padding-right:10px; font-family:Arial, sans-serif;'>
+            
+            <div style='background: #f4f6f8; padding: 15px; border-radius: 8px; border-left: 5px solid #34495e; margin-bottom: 20px; box-shadow: 0 2px 5px rgba(0,0,0,0.05);'>
+                <h3 style='margin: 0 0 8px 0; color: #2d2d2d; font-size: 15px;'><i class='fa-solid fa-map-location-dot'></i> Contexte d'intervention</h3>
+                <p style='margin: 0; font-size: 13px; color: #444; line-height: 1.5;'>Animation de 6 cours d'anglais en ligne avec une apprenante en M1 FLE, réalisés dans le cadre du module « Enseigner en ligne » de mon Master 2 DdLe et TICE.</p>
+            </div>
+
+            <div style='display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 20px;'>
+                <div style='border: 1px solid #ddd; border-top: 3px solid #27ae60; padding: 12px; border-radius: 6px; background: #fff;'>
+                    <h4 style='margin: 0 0 8px 0; font-size: 13px; color: #27ae60;'><i class='fa-solid fa-circle-check'></i> Les atouts du distanciel</h4>
+                    <p style='margin: 0; font-size: 12px; color: #555; line-height: 1.4;'>Une flexibilité précieuse permettant une gestion du temps optimisée, la modification des supports (PPT, notes) en temps réel, et un cadre souvent plus rassurant pour l'apprenant.</p>
+                </div>
+                <div style='border: 1px solid #ddd; border-top: 3px solid #e74c3c; padding: 12px; border-radius: 6px; background: #fff;'>
+                    <h4 style='margin: 0 0 8px 0; font-size: 13px; color: #e74c3c;'><i class='fa-solid fa-triangle-exclamation'></i> Les défis à pallier</h4>
+                    <p style='margin: 0; font-size: 12px; color: #555; line-height: 1.4;'>La nécessité de compenser la distance physique et les potentiels aléas techniques par une préparation numérique rigoureuse et une forte anticipation.</p>
+                </div>
+            </div>
+
+            <h3 style='color:#003399; margin-bottom:12px; border-bottom: 2px dashed #ccc; padding-bottom: 5px; font-size: 15px;'><i class='fa-solid fa-chalkboard-user'></i> Ma posture pédagogique</h3>
+            <p style='margin: 0 0 20px 0; font-size: 13px; color: #333; line-height: 1.6;'>
+                Je considère que la modalité (présentiel ou distanciel) importe peu : l'essentiel est d'explorer divers contextes d'apprentissage. Au fil des séances, mon approche a évolué vers une <b>personnalisation accrue</b>. En m'appuyant sur les TICE et des techniques d'<b>étayage</b>, j'ai cherché à guider l'apprenante vers ses propres réponses. J'ai constaté que la motivation dépendait finalement moins du support numérique que de l'intérêt des sujets traités et du dynamisme de l'échange.
+            </p>
+
+            <div style='background: #2d2d2d; color: #fff; padding: 18px; border-radius: 8px; text-align: center; box-shadow: 0 4px 10px rgba(0,0,0,0.15);'>
+                <p style='margin: 0 0 8px 0; font-size: 14px; font-weight: bold; color: #FFE7AB;'><i class='fa-regular fa-lightbulb'></i> Conseil aux formateurs débutants</p>
+                <p style='margin: 0; font-size: 13px; color: #eee; line-height: 1.5; font-style: italic;'>« Soyez flexibles et à l'écoute. Maîtriser son sujet pour parler avec fluidité et choisir des thématiques qui passionnent l'apprenant sont les clés pour transformer l'écran en un véritable espace de connexion pédagogique. »</p>
+            </div>
+
+         </div>"
+         data-link="">
+        <i class="fa-solid fa-video file-icon" style="color: #8e28c8;"></i>
+        <div class="file-name">Enseigner_Ligne</div>
+        <div class="file-desc">Cours d'anglais</div> 
+    </div>
+
+    <div class="category-title">Réflexion & Perspectives</div>
+
+    <div class="file-item" 
+         data-title="Perspectives Professionnelles" 
+         data-desc="<div style='padding-right:10px; font-family:Arial, sans-serif;'>
+            
+            <div style='background: linear-gradient(135deg, #f1ebd9, #e2d7be); padding: 20px; border-radius: 8px; border-left: 5px solid #c46473; margin-bottom: 25px; box-shadow: 0 2px 5px rgba(0,0,0,0.05);'>
+                <h3 style='margin: 0 0 12px 0; color: #2d2d2d; font-size: 16px;'><i class='fa-solid fa-route'></i> Bilan & Réflexion Globale</h3>
+                <p style='margin: 0 0 10px 0; font-size: 14px; color: #444; line-height: 1.6;'>Mon parcours m'a permis de construire une <b>double identité professionnelle</b> : celle d'une formatrice de terrain, familière avec la réalité et les besoins des apprenants, et celle d'une conceptrice pédagogique, capable de scénariser et de déployer des dispositifs de formation complets.</p>
+                <p style='margin: 0; font-size: 14px; color: #444; line-height: 1.6;'>Cette transition de la micro-pédagogie vers la macro-conception m'a confortée dans ma vision : <b>les outils numériques ne sont pertinents que s'ils servent une intention pédagogique claire.</b> Mon rôle est d'être la traductrice entre l'expertise métier et l'expérience utilisateur de l'apprenant.</p>
+            </div>
+
+            <h3 style='color:#003399; margin-bottom:15px; border-bottom: 2px dashed #ccc; padding-bottom: 5px; font-size: 16px;'><i class='fa-solid fa-handshake-angle'></i> Mes piliers (Savoir-être)</h3>
+            
+            <div style='display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 25px;'>
+                <div style='background: #f9f9f9; border-left: 3px solid #4a90e2; padding: 10px 15px; border-radius: 0 8px 8px 0;'>
+                    <b style='color:#2d2d2d; font-size:13px;'><i class='fa-solid fa-ear-listen'></i> Écoute active & Empathie</b><br>
+                    <span style='font-size:12px; color:#555;'>Comprendre les freins des apprenants et co-construire avec les experts.</span>
+                </div>
+                <div style='background: #f9f9f9; border-left: 3px solid #e67e22; padding: 10px 15px; border-radius: 0 8px 8px 0;'>
+                    <b style='color:#2d2d2d; font-size:13px;'><i class='fa-solid fa-arrows-split-up-and-left'></i> Adaptabilité agile</b><br>
+                    <span style='font-size:12px; color:#555;'>Ajuster les scénarios et les outils face aux aléas techniques ou temporels.</span>
+                </div>
+                <div style='background: #f9f9f9; border-left: 3px solid #f1c40f; padding: 10px 15px; border-radius: 0 8px 8px 0;'>
+                    <b style='color:#2d2d2d; font-size:13px;'><i class='fa-solid fa-list-check'></i> Gestion de projet</b><br>
+                    <span style='font-size:12px; color:#555;'>Coordonner les différentes phases (ADDIE / SAM) et tenir les délais de livraison.</span>
+                </div>
+                <div style='background: #f9f9f9; border-left: 3px solid #27ae60; padding: 10px 15px; border-radius: 0 8px 8px 0;'>
+                    <b style='color:#2d2d2d; font-size:13px;'><i class='fa-solid fa-seedling'></i> Veille proactive</b><br>
+                    <span style='font-size:12px; color:#555;'>Explorer en continu les nouvelles pratiques (IA, ludification, EdTech).</span>
+                </div>
+            </div>
+
+            <h3 style='color:#003399; margin-bottom:15px; border-bottom: 2px dashed #ccc; padding-bottom: 5px; font-size: 16px;'><i class='fa-solid fa-rocket'></i> Actions & Mobilisation future</h3>
+            
+            <div style='display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 12px; margin-bottom: 25px;'>
+                <div style='background: #fff; border: 1px solid #ddd; border-radius: 8px; padding: 15px 10px; text-align: center; box-shadow: 0 2px 4px rgba(0,0,0,0.05);'>
+                    <i class='fa-solid fa-laptop-file' style='font-size: 28px; color: #4a90e2; margin-bottom: 12px;'></i>
+                    <h4 style='margin: 0 0 8px 0; font-size: 13px; color: #2d2d2d;'>Ingénierie hybride</h4>
+                    <p style='margin: 0; font-size: 12px; color: #666; line-height: 1.4;'>Scénariser des parcours fluides mêlant présentiel, synchrone et e-learning en autonomie.</p>
+                </div>
+                <div style='background: #fff; border: 1px solid #ddd; border-radius: 8px; padding: 15px 10px; text-align: center; box-shadow: 0 2px 4px rgba(0,0,0,0.05);'>
+                    <i class='fa-solid fa-universal-access' style='font-size: 28px; color: #e67e22; margin-bottom: 12px;'></i>
+                    <h4 style='margin: 0 0 8px 0; font-size: 13px; color: #2d2d2d;'>Inclusion universelle</h4>
+                    <p style='margin: 0; font-size: 12px; color: #666; line-height: 1.4;'>Concevoir des ressources accessibles (sous-titrage, lisibilité, respect des normes RGAA).</p>
+                </div>
+                <div style='background: #fff; border: 1px solid #ddd; border-radius: 8px; padding: 15px 10px; text-align: center; box-shadow: 0 2px 4px rgba(0,0,0,0.05);'>
+                    <i class='fa-solid fa-chart-pie' style='font-size: 28px; color: #f1c40f; margin-bottom: 12px;'></i>
+                    <h4 style='margin: 0 0 8px 0; font-size: 13px; color: #2d2d2d;'>Suivi & Amélioration</h4>
+                    <p style='margin: 0; font-size: 12px; color: #666; line-height: 1.4;'>Exploiter les données des plateformes (LMS) pour évaluer et ajuster les parcours de formation.</p>
+                </div>
+            </div>
+
+            <div style='background: #2d2d2d; color: #fff; padding: 20px; border-radius: 8px; text-align: center; box-shadow: 0 4px 10px rgba(0,0,0,0.15);'>
+                <p style='margin: 0 0 10px 0; font-size: 16px; font-weight: bold; color: #FFE7AB;'><i class='fa-solid fa-crosshairs'></i> Mon ambition</p>
+                <p style='margin: 0; font-size: 14px; color: #eee; line-height: 1.5; font-style: italic;'>Évoluer vers des postes de coordination pédagogique ou de conception e-learning, où l'humain reste au centre de l'innovation numérique.</p>
+            </div>
+
+         </div>"
+         data-link="">
+        <i class="fa-solid fa-file-lines file-icon" style="color: #4a90e2;"></i>
+        <div class="file-name">Perspectives.txt</div>
+        <div class="file-desc">Bilan & Avenir</div>
+        </div>
+
+        </div>
+    </div>
+
+    <div class="status-bar">
+        <span>9 objets</span>
+        <span>Système : Prêt</span>
+        <span>Ordinateur de Selsabil</span>
+    </div>
+
+</section>
+
+<div id="modal-overlay" class="modal-overlay hidden">
+    <div class="window modal-window">
+        <div class="window-header">
+            <span id="modal-title-header">DETAIL_PROJET.EXE</span>
+            <div class="window-icons">
+                <button id="close-btn" class="close-btn">X</button>
+            </div>
+        </div>
+
+        <div class="content">
+            <div id="modal-icon" class="modal-icon-large"></div>
+            <h2 id="modal-title">Titre</h2>
+            <p id="modal-desc"></p>
+            <div class="modal-footer">
+                <a id="modal-link" href="#" target="_blank" class="retro-btn">
+                    Voir le projet <i class="fas fa-external-link-alt"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
